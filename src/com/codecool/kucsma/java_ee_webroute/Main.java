@@ -7,8 +7,13 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
+
+        //easy way
         server.createContext("/test", new MyHandler());
-        server.createContext("/here", new OwnHandler());
+
+        //using reflection
+        OwnHandler.init(server);
+
         server.setExecutor(null); // creates a default executor
         server.start();
     }

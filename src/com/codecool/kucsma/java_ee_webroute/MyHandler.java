@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 class MyHandler implements HttpHandler {
-    @Override
+    @WebRoute(path = "/test")
     public void handle(HttpExchange requestData) throws IOException {
         String response = "This is the response";
         requestData.sendResponseHeaders(200, response.getBytes().length);
@@ -16,3 +16,4 @@ class MyHandler implements HttpHandler {
         os.close();
     }
 }
+
